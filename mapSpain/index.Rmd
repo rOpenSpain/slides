@@ -1,0 +1,100 @@
+---
+title: "mapSpain"
+subtitle: "Maps of Spain with R"  
+author: 
+  - "Diego Hernangómez"
+output:
+  xaringan::moon_reader:
+    seal: false
+    self_contained: false
+    css: [default, rOpenSpain.css]
+    nature:
+      beforeInit: "rOpenSpain.js"
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  comment = "#>",
+  echo = TRUE,
+  cache = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  hiline = TRUE,
+  dpi = 300
+)
+
+
+library(mapSpain)
+```
+
+
+## mapSpain <img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" height="70" style="margin-top: -10px;vertical-align: middle;">
+
+
+**Key features**:
+
+ - **Easy mapping of boundaries of Spain** (nation-wide, autonomous communities, provinces,
+municipalities).
+
+- Use of **WMS/WMTS image tiles** (Google Maps-like) on either static and interactive maps (with {`leaflet`}) provided by Spanish public organisms.
+
+- Translates names of autonomous communities and provinces across languages (Spanish, English, Catalan, ...) and into standardized codes (ISO, NUTS, INE codes, ...)
+
+**Data sources**:
+
+-  [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat).
+   
+-  [Instituto Geografico Nacional](https://www.ign.es/) (IGN).
+
+-  For tiles:  Public organisms (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
+
+
+**Output formats:**
+- **sf** for vectors (as boundaries, roads, etc.) 
+- **SpatRaster** (`terra`) for static tiles.
+
+---
+
+## Quick demo
+
+
+.pull-left[
+```{r intro, eval=FALSE}
+library(mapSpain)
+library(tidyverse)
+galicia <- esp_get_munic_siane(region = "Galicia") %>%
+    mutate(
+      Provincia = esp_dict_translate(ine.prov.name, "es")
+  )
+
+tile <- esp_getTiles(galicia, "PNOA", bbox_expand = .2,
+                     zoommin = 1)
+
+ggplot(galicia) +
+  layer_spatraster(data=tile) +
+  geom_sf(aes(fill = ine.prov.name),
+    color = "grey70"
+  ) +
+  labs(title = "Provincias de Galicia") +
+  scale_fill_discrete(
+    type =
+      hcl.colors(4, "Blues")
+  ) +
+  theme_bw()
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width="90%", ref.label="intro"}
+```
+]
