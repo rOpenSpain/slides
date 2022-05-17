@@ -61,7 +61,7 @@ tile &lt;- esp_getTiles(galicia, "PNOA", bbox_expand = .2,
 
 ggplot(galicia) +
   layer_spatraster(data=tile) +
-  geom_sf(aes(fill = ine.prov.name),
+  geom_sf(aes(fill = Provincia),
     color = "grey70"
   ) +
   labs(title = "Provincias de Galicia") +
@@ -74,7 +74,7 @@ ggplot(galicia) +
 ]
 
 .pull-right[
-&lt;img src="index_files/figure-html/unnamed-chunk-1-1.png" width="90%" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-1-1.png" width="100%" /&gt;
 ]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

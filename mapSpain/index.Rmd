@@ -82,7 +82,7 @@ tile <- esp_getTiles(galicia, "PNOA", bbox_expand = .2,
 
 ggplot(galicia) +
   layer_spatraster(data=tile) +
-  geom_sf(aes(fill = ine.prov.name),
+  geom_sf(aes(fill = Provincia),
     color = "grey70"
   ) +
   labs(title = "Provincias de Galicia") +
@@ -95,6 +95,6 @@ ggplot(galicia) +
 ]
 
 .pull-right[
-```{r, echo=FALSE, out.width="90%", ref.label="intro"}
+```{r, echo=FALSE, out.width="100%", ref.label="intro"}
 ```
 ]
