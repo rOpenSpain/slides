@@ -70,8 +70,8 @@ municipalities).
 library(mapSpain)
 library(tidyverse)
 galicia <- esp_get_munic_siane(region = "Galicia") %>%
-    mutate(
-      Provincia = esp_dict_translate(ine.prov.name, "es")
+  mutate(
+    Provincia = esp_dict_translate(ine.prov.name, "es")
   )
 
 ggplot(galicia) +
@@ -89,5 +89,6 @@ ggplot(galicia) +
 
 .pull-right[
 ```{r, echo=FALSE, out.width="100%", ref.label="intro"}
+
 ```
 ]
