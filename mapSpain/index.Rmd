@@ -6,7 +6,7 @@ author:
 output:
   xaringan::moon_reader:
     seal: false
-    self_contained: false
+    self_contained: true
     css: [default, rOpenSpain.css]
     nature:
       beforeInit: "rOpenSpain.js"
@@ -26,7 +26,6 @@ knitr::opts_chunk$set(
   cache = FALSE,
   comment = "#>",
   echo = TRUE,
-  cache = TRUE,
   message = FALSE,
   warning = FALSE,
   hiline = TRUE,
@@ -38,8 +37,7 @@ library(mapSpain)
 ```
 
 
-## mapSpain <img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" height="70" style="margin-top: -10px;vertical-align: middle;">
-
+## mapSpain <img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" height="70" style="margin-top: -10px;vertical-align: middle;"> <span style="font-size: 50%;">(on CRAN)</span>
 
 **Key features**:
 
@@ -67,7 +65,6 @@ municipalities).
 
 ## Quick demo
 
-
 .pull-left[
 ```{r intro, eval=FALSE}
 library(mapSpain)
@@ -77,11 +74,7 @@ galicia <- esp_get_munic_siane(region = "Galicia") %>%
       Provincia = esp_dict_translate(ine.prov.name, "es")
   )
 
-tile <- esp_getTiles(galicia, "PNOA", bbox_expand = .2,
-                     zoommin = 1)
-
 ggplot(galicia) +
-  layer_spatraster(data=tile) +
   geom_sf(aes(fill = Provincia),
     color = "grey70"
   ) +
