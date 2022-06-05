@@ -1,0 +1,107 @@
+---
+title: "CatastRoNav"
+subtitle: "Cadastral Information of Navarre"  
+author: 
+  - "Diego Hernangómez"
+output:
+  xaringan::moon_reader:
+    seal: false
+    self_contained: true
+    css: [default, rOpenSpain.css]
+    nature:
+      beforeInit: "rOpenSpain.js"
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  comment = "#>",
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  hiline = TRUE,
+  dpi = 300
+)
+
+if (!require("CatastRoNav")) {
+  install.packages("CatastRoNav", repos = "https://ropenspain.r-universe.dev")
+}
+
+
+library(CatastRoNav)
+```
+
+
+## CatastRoNav <img src="https://ropenspain.github.io/CatastRoNav/logo.png" alt="catastronav-logo" height="70" style="margin-top: -10px;vertical-align: middle;"> <span style="font-size: 50%;">(on GitHub)</span>
+
+
+**Key features**:
+
+ - Takes advantage of **INSPIRE Directive**
+
+ - Retrieves cadastral **spatial data** of **buildings**, **parcels** and 
+   specific **cadastral references**.
+ 
+ - Get data **by bounding box** (WFS service).
+ 
+ 
+**Data sources**:
+
+-  [Cadastre of Navarre](https://idena.navarra.es/portal/servicios?lang=en)
+
+
+**Output formats:**
+
+- **sf** objects.
+
+
+**Note**
+
+Service provided by the **Cadastre of Navarre is more limited** than the provided
+by the Spanish Cadastre (see **CatastRo** package).
+---
+
+## Quick demo
+
+.pull-left[
+```{r intro, eval=FALSE}
+library(CatastRoNav)
+library(tidyverse)
+
+olite <- c(-1.646812, 42.814528, -1.638036, 42.820320)
+
+olite_bu <- catrnav_wfs_get_buildings_bbox(
+  olite,
+  srs = 4326
+)
+
+
+ggplot(olite_bu) +
+  geom_sf(aes(fill = value), color = NA) +
+  scale_fill_viridis_b(
+    show.limits = TRUE,
+    breaks = seq(0, 30, 5)
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Olite, Navarre",
+    subtitle = "Height of buldings",
+    fill = "meters"
+  )
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width="100%", ref.label="intro"}
+
+```
+]

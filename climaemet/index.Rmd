@@ -1,0 +1,105 @@
+---
+title: "climaemet"
+subtitle: "Climate AEMET Tools"  
+author: 
+  - "Diego Hernangómez"
+output:
+  xaringan::moon_reader:
+    seal: false
+    self_contained: true
+    css: [default, rOpenSpain.css]
+    nature:
+      beforeInit: "rOpenSpain.js"
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.retina = 3,
+  out.width = "100%",
+  cache = TRUE,
+  comment = "#>",
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  hiline = TRUE,
+  dpi = 300
+)
+
+
+library(climaemet)
+```
+
+
+## climaemet <img src="https://ropenspain.github.io/climaemet/logo.png" alt="catastro-logo" height="70" style="margin-top: -10px;vertical-align: middle;"> <span style="font-size: 50%;">(on CRAN)</span>
+
+
+
+**Key features**:
+
+ - Retrieves climatic information registered by the AEMET stations (wind speed,
+ temperature, air pressure.
+ 
+ - Can retrieve data on **spatial format** (*sf**).
+
+**Data sources**:
+
+-  [Agencia Estatal de Meteorología](https://opendata.aemet.es/centrodedescargas/inicio).
+
+**Output formats:**
+
+- Formatted **tibble** for compatibility with **tidyverse**. Dates and numbers
+  are formatted properly
+
+- Geo-tagged points (**sf**) using the option `return_sf = TRUE`.
+
+**(Free) API key required**
+
+Needs an API Key ([Go get it](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey)). Can
+be recorded as environment variable on R using `aemet_api_key(<apikey>, install = TRUE)` 
+
+
+---
+
+## Quick demo
+
+.pull-left[
+```{r intro, eval=FALSE}
+
+library(climaemet)
+library(tidyverse)
+
+temp2020 <- aemet_daily_period(
+  "8416",
+  start = 2020, end = 2020
+)
+
+ggplot(temp2020) +
+  geom_col(aes(fecha, tmed, fill = tmed)) +
+  scale_fill_gradientn(
+    colours = hcl.colors(20, "RdBu", rev = TRUE),
+    labels = scales::label_number(suffix = "º")
+  ) +
+  guides(fill = guide_colorsteps()) +
+  theme_minimal() +
+  labs(
+    title = "Valencia, Spain",
+    subtitle = "AEMET Station Id: 8416",
+    fill = "Avg. daily temp."
+  ) +
+  ylab("Celsius degrees") +
+  xlab("date")
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width="100%", ref.label="intro"}
+
+```
+]

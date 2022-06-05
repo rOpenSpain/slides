@@ -1,0 +1,97 @@
+---
+title: "tidyBdE"
+subtitle: "Download Data from Bank of Spain"  
+author: 
+  - "Diego Hernangómez"
+output:
+  xaringan::moon_reader:
+    seal: false
+    self_contained: true
+    css: [default, rOpenSpain.css]
+    nature:
+      beforeInit: "rOpenSpain.js"
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  comment = "#>",
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  hiline = TRUE,
+  dpi = 300
+)
+
+
+library(tidyBdE)
+```
+
+
+## tidyBdE <img src="https://ropenspain.github.io/tidyBdE/logo.png" alt="tidyBdE-logo" height="70" style="margin-top: -10px;vertical-align: middle;"> <span style="font-size: 50%;">(on CRAN)</span>
+
+API package that helps to retrieve data from Banco de España.
+
+**Key features**:
+
+ - **~14.000** time series available. Specific series can be search by keyword.
+
+- Includes **macroeconomic data** from the Statistical Bulletin, **key summary
+indicators, exchange rates and interest rates**.
+
+- Helper functions to retrieve some of the most relevant indicators via `bde_ind_*` functions
+(`bde_ind_unemployment_rate()`, `bde_ind_gdp_var()`, `bde_ind_ibex()`, etc.).
+
+- Specific color palettes and theme for `ggplot2`.
+
+**Data sources**:
+
+-  [Bank of Spain](https://www.bde.es/webbde/en/estadis/infoest/descarga_series_temporales.html) 
+time-series bulk data download. This includes also data from ECB, INE, Eurostat, etc.
+   
+
+**Output formats:**
+- **tibble**, with dates and numbers formatted to base **R** specification 
+(i.e. `2,000.32` with decimal comma is converted to `2000,32`).
+
+
+---
+
+## Quick demo
+
+
+.pull-left[
+```{r intro, eval=FALSE}
+library(tidyBdE)
+library(tidyverse)
+euribor_month <- bde_ind_euribor_12m_monthly() %>%
+  filter(Date > "2010-01-01")
+
+ggplot(euribor_month, aes(Date, Euribor_12M_Monthly)) +
+  geom_line(colour = bde_vivid_pal()(1)) +
+  scale_y_continuous(
+    labels = scales::number_format(suffix = "%")
+  ) +
+  theme_bde() +
+  labs(
+    title = "Euribor 12 months",
+    subtitle = "Monthly data",
+    caption = "Source: BdE"
+  )
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width="100%", ref.label="intro"}
+
+```
+]
