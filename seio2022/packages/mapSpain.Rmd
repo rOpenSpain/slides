@@ -1,0 +1,65 @@
+
+---
+
+# mapSpain <img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" height="70" style="margin-top: -10px;vertical-align: middle;"> <span style="font-size: 50%;">(on CRAN)</span>
+
+.pull-left[
+### Authors
+
+- **Diego Hernangómez**
+
+### Key features
+
+- **Easy mapping of boundaries of Spain** (nation-wide, autonomous communities, provinces, municipalities).
+- Use of **WMS/WMTS image tiles** (Google Maps-like) on either static and interactive maps
+  (with {`leaflet`}) provided by Spanish public organisms.
+- Translates names of autonomous communities and provinces across languages (Spanish, English, Catalan, ...)
+  and into standardized codes (ISO, NUTS, INE...).
+]
+
+.pull-right[
+### Data sources
+
+- [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat).
+- [Instituto Geografico Nacional](https://www.ign.es/) (IGN).
+- For tiles: Public organisms (<https://www.idee.es/web/idee/segun-tipo-de-servicio>).
+
+### Output formats
+
+- **sf** for vectors (as boundaries, roads, etc.).
+- **SpatRaster** ({`terra`}) for static tiles.
+]
+
+---
+
+# mapSpain <img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" height="70" style="margin-top: -10px;vertical-align: middle;"> <span style="font-size: 50%;">(on CRAN)</span>
+
+.pull-left[
+### Quick demo
+
+```{r mapspain-example, fig.show="hide"}
+library(mapSpain)
+library(ggplot2)
+
+galicia <- esp_get_munic_siane(region = "Galicia") |>  #<<
+  transform(
+    Provincia = esp_dict_translate( #<<
+      ine.prov.name, "es"
+    )
+  )
+
+ggplot(galicia) +
+  geom_sf(aes(fill = Provincia), color = "grey70") +
+  labs(title = "Provincias de Galicia") +
+  scale_fill_discrete(
+    type = hcl.colors(4, "Blues")
+  ) +
+  theme_bw()
+```
+]
+
+.pull-right[
+```{r mapspain-plot, echo=FALSE, ref.label="mapspain-example"}
+detach("package:mapSpain")
+```
+]

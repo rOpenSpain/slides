@@ -1,0 +1,66 @@
+
+---
+
+# senadoRES <span style="font-size: 50%;">(on GitHub)</span>
+
+.pull-left[
+### Authors
+
+- **Lluís Revilla Sancho**
+
+### Key features
+
+- Retrieve senators data since 1977.
+- Retrieve summaries, commissions, documents, initiatives...
+]
+
+.pull-right[
+### Data sources
+
+- [Senado](https://www.senado.es/web/relacionesciudadanos/datosabiertos/catalogodatos/index.html).
+
+### Output formats
+
+- **data.frame**.
+]
+
+---
+
+# senadoRES <span style="font-size: 50%;">(on GitHub)</span>
+
+.pull-left[
+### Quick demo
+
+```{r senadoRES-example, fig.show="hide"}
+library(senadoRES)
+library(dplyr)
+library(ggplot2)
+
+df <- senadores() |> #<<
+  group_by(legislatura) |>
+  count(sex) |>
+  filter(!is.na(sex)) |>
+  mutate(ratio = n/sum(n)) |>
+  filter(sex != "male")
+
+ggplot(df) +
+  aes(legislatura, ratio) +
+  geom_line() +
+  geom_hline(yintercept=0.5, linetype=2, col="red") +
+  scale_y_continuous(
+    labels = scales::percent_format(accuracy = 1)) +
+  theme_bw() +
+  labs(
+    title = "Ratio of women",
+    x = "Legislatura",
+    y = "% of women"
+  )
+```
+]
+
+.pull-right[
+```{r senadoRES-plot, echo=FALSE, ref.label="senadoRES-example"}
+detach("package:senadoRES")
+detach("package:dplyr")
+```
+]

@@ -1,0 +1,53 @@
+
+---
+
+# caRtociudad <span style="font-size: 50%;">(on GitHub)</span>
+
+.pull-left[
+### Authors
+
+- **Carlos J. Gil Bellosta**
+- Luz Frías
+
+### Key features
+
+- Access to **CartoCiudad API**, which provides mapping and other related services for Spain.
+- Services: geocoding, reverse geocoding, routes, maps...
+- **Unlimited and free** (no quota limits, no registration procedures).
+
+]
+
+.pull-right[
+### Data sources
+
+- [CartoCiudad](https://www.cartociudad.es/web/portal).
+
+### Output formats
+
+- **data.frame**.
+- **ggmap**-compatible **raster** objects.
+]
+
+---
+
+# caRtociudad <span style="font-size: 50%;">(on GitHub)</span>
+
+.pull-left[
+### Quick demo
+
+```{r caRtociudad-example, fig.show="hide"}
+library(caRtociudad)
+
+soria <- cartociudad_geocode("ayuntamiento soria") #<<
+soria_map <- cartociudad_get_map( #<<
+  c(soria$lat, soria$lng), 0.3)
+
+ggmap::ggmap(soria_map)
+```
+]
+
+.pull-right[
+```{r caRtociudad-plot, echo=FALSE, ref.label="caRtociudad-example"}
+detach("package:caRtociudad")
+```
+]

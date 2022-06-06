@@ -1,0 +1,66 @@
+
+---
+
+# airqualityES <span style="font-size: 50%;">(on CRAN)</span>
+
+.pull-left[
+### Authors
+
+- **Jose V. Die**
+- Jose R. Caro
+
+### Key features
+
+- Dataset of **air quality measurements** in Spain from 2001 to 2018.
+- Measurements of several pollutants: As B(a)P Cd Ni Pb PM10 PM2.5.
+- Dataset of measurement stations.
+]
+
+.pull-right[
+### Data sources
+
+- [Ministerio para la Transición Ecológica y el Reto Demográfico](https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/atmosfera-y-calidad-del-aire/calidad-del-aire/evaluacion-datos/datos/Default.aspx).
+
+### Output formats
+
+- **tibble**.
+]
+
+---
+
+# airqualityES <span style="font-size: 50%;">(on CRAN)</span>
+
+.pull-left[
+### Quick demo
+
+```{r airqualityES-example, fig.show="hide"}
+library(dplyr)
+library(ggplot2)
+
+selection <- airqualityES::stations |> #<<
+  filter(station_name == "Barcelona (Sants)")
+
+df <- airqualityES::airqES |> #<<
+  filter(grepl(selection$id, station_id)) |>
+  filter(pollutant == "PM10") |>
+  mutate(pm10 = rowMeans(
+    across(starts_with("D")), na.rm=TRUE)) |>
+  mutate(date = as.Date(paste(year, month, 1, sep="-")))
+
+ggplot(df) +
+  aes(date, pm10) +
+  geom_line() +
+  geom_smooth() +
+  theme_bw() +
+  labs(
+    title = "Montly average of PM10",
+    subtitle = "Measurement at Barcelona (Sants)"
+  )
+```
+]
+
+.pull-right[
+```{r airqualityES-plot, echo=FALSE, ref.label="airqualityES-example"}
+detach("package:dplyr")
+```
+]

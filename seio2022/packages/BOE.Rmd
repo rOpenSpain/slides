@@ -1,0 +1,67 @@
+
+---
+
+# BOE <span style="font-size: 50%;">(on GitHub)</span>
+
+.pull-left[
+### Authors
+
+- **Lluís Revilla Sancho**
+
+### Key features
+
+- Retrieve data from **Boletín Oficial del Estado** (BOE).
+- Retrieve data from **Boletín Oficial del Registro Mercantil del Estado** (BORME).
+- Main function `retrieve_sumario()` to retrieve summaries by date.
+- Additional functions to obtain URLs and download publications.
+]
+
+.pull-right[
+### Data sources
+
+- [Agencia Estatal Boletín Oficial del Estado](https://boe.es/).
+
+### Output formats
+
+- **data.frame**.
+- XML document.
+
+### Notes
+
+- See <https://llrs.github.io/BOE_historico> for a detailed analysis.
+]
+
+---
+
+# BOE <span style="font-size: 50%;">(on GitHub)</span>
+
+.pull-left[
+### Quick demo
+
+```{r boe-example, fig.show="hide"}
+library(BOE)
+library(ggplot2)
+
+sumario <- retrieve_sumario(as.Date("2022-05-06")) |> #<<
+  transform(dpt = sub("MINISTERIO", "M.", departament)) |>
+  transform(dpt = stringr::str_trunc(dpt, 20))
+
+ggplot(sumario) +
+  aes(forcats::fct_infreq(dpt)) +
+  geom_bar() +
+  coord_flip() +
+  theme_minimal() +
+  labs(
+    title = "Publicaciones por departamento",
+    subtitle = "BOE del 6 de mayo de 2022",
+    caption = "Fuente: BOE",
+    x = NULL
+  )
+```
+]
+
+.pull-right[
+```{r boe-plot, echo=FALSE, ref.label="boe-example"}
+detach("package:BOE")
+```
+]

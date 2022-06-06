@@ -1,0 +1,218 @@
+---
+title: "**The rOpenSpain project**"
+subtitle: "R and open data"
+author: "**Iñaki Úcar** | Postdoctoral Fellow @ uc3m-Santander Big Data Institute"
+abstract: |
+  | rOpenSpain is a community of R, open data and reproducibility enthusiasts
+  | that gathers and organizes to create R packages of the highest quality for
+  | the exploitation of Spanish data of general interest. In this talk we will
+  | review its (brief) history, organization and the subprojects that comprise it.
+date: "June 9, 2022"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    css: [default, rOpenSpain.css, extra.css]
+    nature:
+      beforeInit: "rOpenSpain.js"
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  out.width = "100%",
+  cache = TRUE,
+  comment = "#>",
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  hiline = TRUE,
+  dpi = 300
+)
+
+pkgs.maps <- c("mapSpain", "LAU2boundaries4spain", "CatastRo", "CatastRoNav", "caRtociudad")
+pkgs.government <- c("BOE", "infoelectoral", "senadoRES", "opendataes")
+pkgs.statistics <- c("istacbaser", "MicroDatosEs", "MorbiditySpainR", "Siane")
+pkgs.climate <- c("climaemet", "airqualityES")
+pkgs.economy <- c("tidyBdE")
+pkgs.utils <- c("spanish")
+```
+
+class: base28
+
+# Introduction
+
+.left-column[
+## When
+]
+
+.right-column[
+It was **February 2018** when four people came together around open data:
+
+- **Carlos J. Gil Bellosta**, statistical consultant, CEO @ circiteR
+- **Luz Frías**, data developer, CTO @ circiteR
+- **José Manuel Vera**, senior data scientist
+- **Iñaki Úcar**, postdoctoral fellow @ IBiDat
+
+### Motto
+
+> rOpenSci is our form; Spanish public data, our matter
+
+]
+
+---
+class: base28
+
+# Introduction
+
+.left-column[
+## When
+## What
+]
+
+.right-column[
+The **github.com/rOpenSpain** organization
+- Website (ropenspain.es)
+- Onboarding info
+- Templates (shout-outs to Diego Hernangómez)
+- **Packages**
+
+The **ropenspain.slack.com** channel
+- Do not hesitate to contact us for an invitation!
+]
+
+---
+class: base28
+
+# Introduction
+
+.left-column[
+## When
+## What
+## How
+]
+
+.right-column[
+Do you have a package about Spanish data? <br>**Bring it to rOpenSpain!**
+- The author transfers the repo to our GH organization
+- The author retains full admin rights
+- The package is added to the webpage and is available for installation
+  through our [r-universe](https://ropenspain.r-universe.dev) organization
+- We try to encourage R packaging best practices
+- We try to help each other out
+
+Do you need help? Get an invite to our Slack!
+]
+
+---
+
+# Introduction
+
+.left-column[
+## When
+## What
+## How
+## Overview
+]
+
+.right-column[
+.pull-left[
+### Statistical data
+- istacbaser
+- MicroDatosES
+- MorbiditySpainR
+- Siane
+
+### Maps
+- mapSpain
+- LAU2boundaries4spain
+- CatastRo, CatastRoNav
+- caRtociudad
+]
+
+.pull-right[
+### Government
+- BOE
+- infoelectoral
+- senadoRES
+- opendataes
+
+### Economy
+- tidyBdE
+
+### Climate
+- climaemet
+- airqualityES
+]
+]
+
+---
+class: inverse, center, middle
+
+# Statistical data
+
+```{r statistics, child=paste0("packages/", pkgs.statistics, ".Rmd")}
+```
+
+---
+class: inverse, center, middle
+
+# Maps
+
+```{r maps, child=paste0("packages/", pkgs.maps, ".Rmd")}
+```
+
+---
+class: inverse, center, middle
+
+# Government
+
+```{r government, child=paste0("packages/", pkgs.government, ".Rmd")}
+```
+
+---
+class: inverse, center, middle
+
+# Economy
+
+```{r economy, child=paste0("packages/", pkgs.economy, ".Rmd")}
+```
+
+---
+class: inverse, center, middle
+
+# Climate
+
+```{r climate, child=paste0("packages/", pkgs.climate, ".Rmd")}
+```
+
+---
+class: base24
+
+# Join rOpenSpain!
+
+- Much more could be done about the retrieval of statistical data
+  - In particular, we still lack an **"inebaser"** similar to istacbaser
+
+- Mapping needs are pretty much covered, but improvements can always be made
+  - We still lack cadastral access to the Basque Country
+  - Others would require a transition to the new spatial stack (based on **sf**)
+
+- **opendataes** needs your help!
+  - It does a great job setting the framework required to work with datos.gob.es
+  - There are many publishers and formats that could be added
+
+- Do you have other ideas? We'd love to hear you out!
+
+---
+class: center, middle, end-slide
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan) with the [**rosxaringan**](https://github.com/rOpenSpain/rosxaringan) template.
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).

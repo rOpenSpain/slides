@@ -1,0 +1,33 @@
+
+---
+
+# MicroDatosEs <span style="font-size: 50%;">(on CRAN)</span>
+
+.pull-left[
+### Authors
+
+- **Carlos J. Gil Bellosta**
+- Carlos Neira
+- Diego Paniagua Sánchez
+- Fiorella Mori Peláez
+- Jorge López Pérez
+- José Luis Cañadas Reche
+
+### Key features
+
+- Retrieve and process microdata provided by Spanish statistical agencies.
+]
+
+.pull-right[
+### Data sources
+
+- [Instituto Nacional de Estadística](https://ine.es/) (INE).
+
+### Output formats
+
+- **data.frame**.
+
+### Notes
+
+- Currently covers the following datasets: **EPA** (Encuesta de Población Activa), **census** (2011), **EES** (Encuesta de Estructura Salarial), **mortality** (annual deaths in Spain; unfortunately, public microdata does not include the cause of death), **EPF** (Encuesta de Presupuestos Familiares), **padrón**.
+]

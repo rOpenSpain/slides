@@ -1,0 +1,28 @@
+
+---
+
+# istacbaser <span style="font-size: 50%;">(on GitHub)</span>
+
+.pull-left[
+### Authors
+
+- José Manuel Cazorla-Artiles
+- **Christian González-Martel**
+
+### Key features
+
+- Retrieve all the data available in the **Canary Islands Statistics Institute** API.
+- Supports searching and downloading data.
+- Supports **grep-like style search*.**
+- Supports **Most Recent Value** queries.
+]
+
+.pull-right[
+### Data sources
+
+- [Instituto Canario de Estadística](http://www.gobiernodecanarias.org/istac/) (ISTAC).
+
+### Output formats
+
+- **data.frame**, with optional conversion to **POSIXct** for dates.
+]

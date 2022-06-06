@@ -1,0 +1,17 @@
+li:not(:last-child) {
+  margin-bottom: 0.7em;
+}
+
+.remark-slide-content {
+  font-size: 1.1rem;
+}
+
+.base24 p,
+.base24 ul {
+  font-size: 24px;
+}
+
+.base28 p,
+.base28 ul {
+  font-size: 28px;
+}

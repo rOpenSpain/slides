@@ -1,0 +1,68 @@
+
+---
+
+# CatastRo <img src="https://ropenspain.github.io/CatastRo/logo.png" alt="catastro-logo" height="70" style="margin-top: -10px;vertical-align: middle;"> <span style="font-size: 50%;">(on CRAN)</span>
+
+.pull-left[
+### Authors
+
+- Ángel Delgado Panadero
+- Iñaki Úcar
+- **Diego Hernangómez**
+
+### Key features
+
+- Takes advantage of **INSPIRE Directive**.
+- Retrieves cadastral **spatial data** of **buildings**, **parcels** and specific **cadastral references**.
+- Get data **by bounding box** (WFS service) or **by municipality** (ATOM service).
+- Retrieval of imagery via tiles available on the Cadastre.
+]
+
+.pull-right[
+### Data sources
+
+- [Cadastre of Spain](https://www.catastro.minhap.es/webinspire/index.html).
+- **Does not include neither Navarre not the Basque Country**,
+  as they have their own cadastral offices (see **CatastRoNav** for Navarre).
+
+### Output formats
+
+- **sf** for vectors (buildings, parcels, etc.).
+- **SpatRaster** (`terra`) for static tiles.
+]
+
+---
+
+# CatastRo <img src="https://ropenspain.github.io/CatastRo/logo.png" alt="catastro-logo" height="70" style="margin-top: -10px;vertical-align: middle;"> <span style="font-size: 50%;">(on CRAN)</span>
+
+.pull-left[
+### Quick demo
+
+```{r catastro-example, fig.show="hide"}
+library(CatastRo)
+library(ggplot2)
+
+burgo_osma <- catr_atom_get_buildings( #<<
+  "Burgo de Osma"
+) |> sf::st_transform(4326)
+
+ggplot(burgo_osma) +
+  geom_sf(aes(fill = currentUse), col = NA) +
+  scale_fill_viridis_d(na.translate = FALSE) +
+  theme_minimal() +
+  coord_sf(
+    xlim = c(-3.0752, -3.0679),
+    ylim = c(41.5831, 41.5884)
+  ) +
+  labs(
+    title = "El Burgo de Osma, Soria",
+    fill = "Use of the building"
+  )
+```
+]
+
+.pull-right[
+```{r catastro-plot, echo=FALSE, ref.label="catastro-example"}
+detach("package:CatastRo")
+```
+]

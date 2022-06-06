@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>The rOpenSpain project</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Iñaki Úcar | Postdoctoral Fellow @ uc3m-Santander Big Data Institute" />
+    <meta name="date" content="2022-06-09" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <link href="index_files/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="rOpenSpain.css" type="text/css" />
+    <link rel="stylesheet" href="extra.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# <strong>The rOpenSpain project</strong>
+]
+.subtitle[
+## R and open data
+]
+.author[
+### <strong>Iñaki Úcar</strong> | Postdoctoral Fellow @ uc3m-Santander Big Data Institute
+]
+.date[
+### June 9, 2022
+]
+
+---
+
+
+
+
+class: base28
+
+# Introduction
+
+.left-column[
+## When
+]
+
+.right-column[
+It was **February 2018** when four people came together around open data:
+
+- **Carlos J. Gil Bellosta**, statistical consultant, CEO @ circiteR
+- **Luz Frías**, data developer, CTO @ circiteR
+- **José Manuel Vera**, senior data scientist
+- **Iñaki Úcar**, postdoctoral fellow @ IBiDat
+
+### Motto
+
+&gt; rOpenSci is our form; Spanish public data, our matter
+
+]
+
+---
+class: base28
+
+# Introduction
+
+.left-column[
+## When
+## What
+]
+
+.right-column[
+The **github.com/rOpenSpain** organization
+- Website (ropenspain.es)
+- Onboarding info
+- Templates (shout-outs to Diego Hernangómez)
+- **Packages**
+
+The **ropenspain.slack.com** channel
+- Do not hesitate to contact us for an invitation!
+]
+
+---
+class: base28
+
+# Introduction
+
+.left-column[
+## When
+## What
+## How
+]
+
+.right-column[
+Do you have a package about Spanish data? &lt;br&gt;**Bring it to rOpenSpain!**
+- The author transfers the repo to our GH organization
+- The author retains full admin rights
+- The package is added to the webpage and is available for installation
+  through our [r-universe](https://ropenspain.r-universe.dev) organization
+- We try to encourage R packaging best practices
+- We try to help each other out
+
+Do you need help? Get an invite to our Slack!
+]
+
+---
+
+# Introduction
+
+.left-column[
+## When
+## What
+## How
+## Overview
+]
+
+.right-column[
+.pull-left[
+### Statistical data
+- istacbaser
+- MicroDatosES
+- MorbiditySpainR
+- Siane
+
+### Maps
+- mapSpain
+- LAU2boundaries4spain
+- CatastRo, CatastRoNav
+- caRtociudad
+]
+
+.pull-right[
+### Government
+- BOE
+- infoelectoral
+- senadoRES
+- opendataes
+
+### Economy
+- tidyBdE
+
+### Climate
+- climaemet
+- airqualityES
+]
+]
+
+---
+class: inverse, center, middle
+
+# Statistical data
+
+
+
+---
+
+# istacbaser &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- José Manuel Cazorla-Artiles
+- **Christian González-Martel**
+
+### Key features
+
+- Retrieve all the data available in the **Canary Islands Statistics Institute** API.
+- Supports searching and downloading data.
+- Supports **grep-like style search*.**
+- Supports **Most Recent Value** queries.
+]
+
+.pull-right[
+### Data sources
+
+- [Instituto Canario de Estadística](http://www.gobiernodecanarias.org/istac/) (ISTAC).
+
+### Output formats
+
+- **data.frame**, with optional conversion to **POSIXct** for dates.
+]
+
+
+---
+
+# MicroDatosEs &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Carlos J. Gil Bellosta**
+- Carlos Neira
+- Diego Paniagua Sánchez
+- Fiorella Mori Peláez
+- Jorge López Pérez
+- José Luis Cañadas Reche
+
+### Key features
+
+- Retrieve and process microdata provided by Spanish statistical agencies.
+]
+
+.pull-right[
+### Data sources
+
+- [Instituto Nacional de Estadística](https://ine.es/) (INE).
+
+### Output formats
+
+- **data.frame**.
+
+### Notes
+
+- Currently covers the following datasets: **EPA** (Encuesta de Población Activa), **census** (2011), **EES** (Encuesta de Estructura Salarial), **mortality** (annual deaths in Spain; unfortunately, public microdata does not include the cause of death), **EPF** (Encuesta de Presupuestos Familiares), **padrón**.
+]
+
+
+---
+
+# MorbiditySpainR &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Rafael Menéndez**
+
+### Key features
+
+- Retrieve and process morbidity microdata provided by Spanish statistical agencies.
+- Provides functions for basic manipulation (filtering, extract diagnoses, reduce data and compute prevalences).
+]
+
+.pull-right[
+### Data sources
+
+- [Encuesta de morbilidad hospitalaria](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=1254736176778&amp;menu=resultados&amp;secc=1254736195291&amp;idp=1254735573175) del [Instituto Nacional de Estadística](https://ine.es/) (INE).
+
+### Output formats
+
+- **data.frame**.
+]
+
+
+---
+
+# Siane &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- Carlos J. Gil Bellosta
+- **Nuno Carvalho**
+
+### Key features
+
+- Find maps in the (pre-downloaded) Siane repository, i.e. searching by map year
+  or administrative level using `siane_map()`.
+- Bind numerical data to polygons using `siane_merge()`.
+- Compatible with IGN maps and INE data.
+]
+
+.pull-right[
+### Data sources
+
+- [Instituto Geografico Nacional](https://www.ign.es/) (IGN).
+- [Instituto Nacional de Estadística](https://ine.es/) (INE).
+
+### Output formats
+
+- **raster** objects.
+- **data.frame**.
+]
+
+---
+class: inverse, center, middle
+
+# Maps
+
+
+
+---
+
+# mapSpain &lt;img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Diego Hernangómez**
+
+### Key features
+
+- **Easy mapping of boundaries of Spain** (nation-wide, autonomous communities, provinces, municipalities).
+- Use of **WMS/WMTS image tiles** (Google Maps-like) on either static and interactive maps
+  (with {`leaflet`}) provided by Spanish public organisms.
+- Translates names of autonomous communities and provinces across languages (Spanish, English, Catalan, ...)
+  and into standardized codes (ISO, NUTS, INE...).
+]
+
+.pull-right[
+### Data sources
+
+- [GISCO](https://ec.europa.eu/eurostat/web/gisco) (Eurostat).
+- [Instituto Geografico Nacional](https://www.ign.es/) (IGN).
+- For tiles: Public organisms (&lt;https://www.idee.es/web/idee/segun-tipo-de-servicio&gt;).
+
+### Output formats
+
+- **sf** for vectors (as boundaries, roads, etc.).
+- **SpatRaster** ({`terra`}) for static tiles.
+]
+
+---
+
+# mapSpain &lt;img src="https://ropenspain.github.io/mapSpain/logo.png" alt="mapSpain-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(mapSpain)
+library(ggplot2)
+
+*galicia &lt;- esp_get_munic_siane(region = "Galicia") |&gt;
+  transform(
+*   Provincia = esp_dict_translate(
+      ine.prov.name, "es"
+    )
+  )
+
+ggplot(galicia) +
+  geom_sf(aes(fill = Provincia), color = "grey70") +
+  labs(title = "Provincias de Galicia") +
+  scale_fill_discrete(
+    type = hcl.colors(4, "Blues")
+  ) +
+  theme_bw()
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/mapspain-plot-1.png" width="100%" /&gt;
+]
+
+
+---
+
+# LAU2boundaries4spain &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- Francisco Goerlich
+- **Pedro J. Pérez**
+
+### Key features
+
+- Datasets of historical municipality boundaries from 2002 to 2021.
+]
+
+.pull-right[
+### Data sources
+
+- [Instituto Geografico Nacional](https://www.ign.es/) (IGN).
+
+### Output formats
+
+- **sf** data frames.
+]
+
+
+---
+
+# CatastRo &lt;img src="https://ropenspain.github.io/CatastRo/logo.png" alt="catastro-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- Ángel Delgado Panadero
+- Iñaki Úcar
+- **Diego Hernangómez**
+
+### Key features
+
+- Takes advantage of **INSPIRE Directive**.
+- Retrieves cadastral **spatial data** of **buildings**, **parcels** and specific **cadastral references**.
+- Get data **by bounding box** (WFS service) or **by municipality** (ATOM service).
+- Retrieval of imagery via tiles available on the Cadastre.
+]
+
+.pull-right[
+### Data sources
+
+- [Cadastre of Spain](https://www.catastro.minhap.es/webinspire/index.html).
+- **Does not include neither Navarre not the Basque Country**,
+  as they have their own cadastral offices (see **CatastRoNav** for Navarre).
+
+### Output formats
+
+- **sf** for vectors (buildings, parcels, etc.).
+- **SpatRaster** (`terra`) for static tiles.
+]
+
+---
+
+# CatastRo &lt;img src="https://ropenspain.github.io/CatastRo/logo.png" alt="catastro-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(CatastRo)
+library(ggplot2)
+
+*burgo_osma &lt;- catr_atom_get_buildings(
+  "Burgo de Osma"
+) |&gt; sf::st_transform(4326)
+
+ggplot(burgo_osma) +
+  geom_sf(aes(fill = currentUse), col = NA) +
+  scale_fill_viridis_d(na.translate = FALSE) +
+  theme_minimal() +
+  coord_sf(
+    xlim = c(-3.0752, -3.0679),
+    ylim = c(41.5831, 41.5884)
+  ) +
+  labs(
+    title = "El Burgo de Osma, Soria",
+    fill = "Use of the building"
+  )
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/catastro-plot-1.png" width="100%" /&gt;
+]
+
+
+---
+
+# CatastRoNav &lt;img src="https://ropenspain.github.io/CatastRoNav/logo.png" alt="catastronav-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Diego Hernangómez**
+
+### Key features
+
+- Takes advantage of **INSPIRE Directive**.
+- Retrieves cadastral **spatial data** of **buildings**, **parcels** and specific **cadastral references**.
+- Get data **by bounding box** (WFS service).
+]
+
+.pull-right[
+### Data sources
+
+- [Cadastre of Navarre](https://idena.navarra.es/portal/servicios?lang=en).
+
+### Output formats
+
+- **sf** objects.
+
+### Notes
+
+- Service provided by the **Cadastre of Navarre is more limited** than the provided
+  by the Spanish Cadastre (see **CatastRo** package).
+]
+
+---
+
+# CatastRoNav &lt;img src="https://ropenspain.github.io/CatastRoNav/logo.png" alt="catastronav-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(CatastRoNav)
+library(ggplot2)
+
+olite &lt;- c(-1.646812, 42.814528, -1.638036, 42.820320)
+
+*olite_bu &lt;- catrnav_wfs_get_buildings_bbox(
+  olite,
+  srs = 4326
+)
+
+ggplot(olite_bu) +
+  geom_sf(aes(fill = value), color = NA) +
+  scale_fill_viridis_b(
+    show.limits = TRUE,
+    breaks = seq(0, 30, 5)
+  ) +
+  theme_minimal() +
+  labs(
+    title = "Olite, Navarre",
+    subtitle = "Height of buldings",
+    fill = "meters"
+  )
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/catastronav-plot-1.png" width="100%" /&gt;
+]
+
+
+---
+
+# caRtociudad &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Carlos J. Gil Bellosta**
+- Luz Frías
+
+### Key features
+
+- Access to **CartoCiudad API**, which provides mapping and other related services for Spain.
+- Services: geocoding, reverse geocoding, routes, maps...
+- **Unlimited and free** (no quota limits, no registration procedures).
+
+]
+
+.pull-right[
+### Data sources
+
+- [CartoCiudad](https://www.cartociudad.es/web/portal).
+
+### Output formats
+
+- **data.frame**.
+- **ggmap**-compatible **raster** objects.
+]
+
+---
+
+# caRtociudad &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(caRtociudad)
+
+*soria &lt;- cartociudad_geocode("ayuntamiento soria")
+*soria_map &lt;- cartociudad_get_map(
+  c(soria$lat, soria$lng), 0.3)
+
+ggmap::ggmap(soria_map)
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/caRtociudad-plot-1.png" width="100%" /&gt;
+]
+
+---
+class: inverse, center, middle
+
+# Government
+
+
+
+---
+
+# BOE &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Lluís Revilla Sancho**
+
+### Key features
+
+- Retrieve data from **Boletín Oficial del Estado** (BOE).
+- Retrieve data from **Boletín Oficial del Registro Mercantil del Estado** (BORME).
+- Main function `retrieve_sumario()` to retrieve summaries by date.
+- Additional functions to obtain URLs and download publications.
+]
+
+.pull-right[
+### Data sources
+
+- [Agencia Estatal Boletín Oficial del Estado](https://boe.es/).
+
+### Output formats
+
+- **data.frame**.
+- XML document.
+
+### Notes
+
+- See &lt;https://llrs.github.io/BOE_historico&gt; for a detailed analysis.
+]
+
+---
+
+# BOE &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(BOE)
+library(ggplot2)
+
+*sumario &lt;- retrieve_sumario(as.Date("2022-05-06")) |&gt;
+  transform(dpt = sub("MINISTERIO", "M.", departament)) |&gt;
+  transform(dpt = stringr::str_trunc(dpt, 20))
+
+ggplot(sumario) +
+  aes(forcats::fct_infreq(dpt)) +
+  geom_bar() +
+  coord_flip() +
+  theme_minimal() +
+  labs(
+    title = "Publicaciones por departamento",
+    subtitle = "BOE del 6 de mayo de 2022",
+    caption = "Fuente: BOE",
+    x = NULL
+  )
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/boe-plot-1.png" width="100%" /&gt;
+]
+
+
+---
+
+# infoelectoral &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Héctor Meleiro**
+
+### Key features
+
+- Retrieve election data at municipality level.
+- Retrieve election data at polling station level.
+- Retrieve election candidates data.
+- Provides datasets with administrative codes
+  for autonomous communities, provinces, and municipalities,
+  as well as median income data for census tracts.
+]
+
+.pull-right[
+### Data sources
+
+- [Ministerio del Interior](https://infoelectoral.interior.gob.es/opencms/es/inicio/).
+
+### Output formats
+
+- **data.frame**.
+]
+
+---
+
+# infoelectoral &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(infoelectoral)
+library(dplyr)
+library(ggplot2)
+
+*df &lt;- municipios("congreso", anno="1982", mes="10") |&gt;
+  group_by(siglas) |&gt;
+  summarise(votos = sum(votos)) |&gt;
+  mutate(seats = round(votos / sum(votos) * 350)) |&gt;
+  filter(seats &gt;= 10)
+
+df &lt;- ggparliament::parliament_data(
+  df, type="semicircle", 7, df$seats)
+
+ggplot(df) +
+  aes(x, y, colour = siglas) +
+  ggparliament::geom_parliament_seats() + 
+  ggparliament::theme_ggparliament() +
+  scale_color_manual(values=c(
+    "#3399FF", "#3399FF", "#009900", "#0000EB",
+    "#F10000", "#F10000", "#F10000", "#FFA500"
+  )) +
+  theme(legend.position = 'bottom')
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/infoelectoral-plot-1.png" width="100%" /&gt;
+]
+
+
+---
+
+# senadoRES &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Lluís Revilla Sancho**
+
+### Key features
+
+- Retrieve senators data since 1977.
+- Retrieve summaries, commissions, documents, initiatives...
+]
+
+.pull-right[
+### Data sources
+
+- [Senado](https://www.senado.es/web/relacionesciudadanos/datosabiertos/catalogodatos/index.html).
+
+### Output formats
+
+- **data.frame**.
+]
+
+---
+
+# senadoRES &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(senadoRES)
+library(dplyr)
+library(ggplot2)
+
+*df &lt;- senadores() |&gt;
+  group_by(legislatura) |&gt;
+  count(sex) |&gt;
+  filter(!is.na(sex)) |&gt;
+  mutate(ratio = n/sum(n)) |&gt;
+  filter(sex != "male")
+
+ggplot(df) +
+  aes(legislatura, ratio) +
+  geom_line() +
+  geom_hline(yintercept=0.5, linetype=2, col="red") +
+  scale_y_continuous(
+    labels = scales::percent_format(accuracy = 1)) +
+  theme_bw() +
+  labs(
+    title = "Ratio of women",
+    x = "Legislatura",
+    y = "% of women"
+  )
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/senadoRES-plot-1.png" width="100%" /&gt;
+]
+
+
+---
+
+# opendataes &lt;span style="font-size: 50%;"&gt;(on GitHub)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Jorge Cimentada**
+- Jorge López
+
+### Key features
+
+- Retrieve data from **datos.gob.es**, the open-data initiative from the Spanish Government.
+- Currently, supports CSV format and 11 publishers (see `publishers_available`).
+- The identifier of a web-based search can be directly provided to `openes_load()`.
+- R-based search via `openes_keywords()`.
+]
+
+.pull-right[
+### Data sources
+
+- [datos.gob.es](https://datos.gob.es/).
+
+### Output formats
+
+- An object with `metadata` and `data`, both as **tibble**.
+]
+
+---
+class: inverse, center, middle
+
+# Economy
+
+
+
+---
+
+# tidyBdE &lt;img src="https://ropenspain.github.io/tidyBdE/logo.png" alt="tidyBdE-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Diego Hernangómez**
+
+### Key features
+
+- API package that helps to retrieve data from Banco de España.
+  **~14.000** time series available. Specific series can be search by keyword.
+- Includes **macroeconomic data** from the Statistical Bulletin,
+  **key summary indicators, exchange rates and interest rates**.
+- Helper functions to retrieve some of the most relevant indicators via `bde_ind_*` functions.
+- Specific color palettes and theme for {`ggplot2`}.
+]
+
+.pull-right[
+### Data sources
+
+- [Bank of Spain](https://www.bde.es/webbde/en/estadis/infoest/descarga_series_temporales.html) 
+  time-series bulk data download. This includes also data from ECB, INE, Eurostat, etc.
+
+### Output formats
+
+- **tibble**, with dates and numbers formatted to base **R** specification 
+  (i.e. `2,000.32` with decimal comma is converted to `2000,32`).
+]
+
+---
+
+# tidyBdE &lt;img src="https://ropenspain.github.io/tidyBdE/logo.png" alt="tidyBdE-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(tidyBdE)
+library(ggplot2)
+
+*euribor_month &lt;- bde_ind_euribor_12m_monthly() |&gt;
+  subset(Date &gt; "2010-01-01")
+
+ggplot(euribor_month) +
+  aes(Date, Euribor_12M_Monthly) +
+* geom_line(colour = bde_vivid_pal()(1)) +
+  scale_y_continuous(
+    labels = scales::number_format(suffix = "%")
+  ) +
+* theme_bde() +
+  labs(
+    title = "Euribor 12 months",
+    subtitle = "Monthly data",
+    caption = "Source: BdE"
+  )
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/tidybde-plot-1.png" width="100%" /&gt;
+]
+
+---
+class: inverse, center, middle
+
+# Climate
+
+
+
+---
+
+# climaemet &lt;img src="https://ropenspain.github.io/climaemet/logo.png" alt="catastro-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- Manuel Pizarro
+- **Diego Hernangómez**
+- Gema Fernández-Avilés
+
+### Key features
+
+- Retrieve climatic information registered by the AEMET stations (wind speed, temperature, air pressure...).
+- Optional spatial information in **sf** format.
+- Create scientific graphs (climate charts, trend analysis of climate time series,
+  temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).
+]
+
+.pull-right[
+### Data sources
+
+- [Agencia Estatal de Meteorología](https://opendata.aemet.es/centrodedescargas/inicio).
+
+### Output formats
+
+- Formatted **tibble** for compatibility with **tidyverse**.
+- Dates and numbers are formatted properly.
+- Geo-tagged points (**sf**) using the option `return_sf = TRUE`.
+
+### Notes
+
+- (Free) API key required ([go get it](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey)).
+  Can be recorded as environment variable on R using `aemet_api_key(..., install=TRUE)`.
+]
+
+---
+
+# climaemet &lt;img src="https://ropenspain.github.io/climaemet/logo.png" alt="catastro-logo" height="70" style="margin-top: -10px;vertical-align: middle;"&gt; &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(climaemet)
+library(ggplot2)
+
+*temp2020 &lt;- aemet_daily_period(
+  "8416",
+  start = 2020, end = 2020
+)
+
+ggplot(temp2020) +
+  geom_col(aes(fecha, tmed, fill = tmed)) +
+  scale_fill_gradientn(
+    colours = hcl.colors(20, "RdBu", rev = TRUE),
+    labels = scales::label_number(suffix = "º")
+  ) +
+  guides(fill = guide_colorsteps()) +
+  theme_minimal() +
+  labs(
+    title = "Valencia, Spain",
+    subtitle = "AEMET Station Id: 8416",
+    fill = "Avg. daily temp.",
+    y = "Celsius degrees",
+    x = "date"
+  )
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/climaemet-plot-1.png" width="100%" /&gt;
+]
+
+
+---
+
+# airqualityES &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Authors
+
+- **Jose V. Die**
+- Jose R. Caro
+
+### Key features
+
+- Dataset of **air quality measurements** in Spain from 2001 to 2018.
+- Measurements of several pollutants: As B(a)P Cd Ni Pb PM10 PM2.5.
+- Dataset of measurement stations.
+]
+
+.pull-right[
+### Data sources
+
+- [Ministerio para la Transición Ecológica y el Reto Demográfico](https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/atmosfera-y-calidad-del-aire/calidad-del-aire/evaluacion-datos/datos/Default.aspx).
+
+### Output formats
+
+- **tibble**.
+]
+
+---
+
+# airqualityES &lt;span style="font-size: 50%;"&gt;(on CRAN)&lt;/span&gt;
+
+.pull-left[
+### Quick demo
+
+
+```r
+library(dplyr)
+library(ggplot2)
+
+*selection &lt;- airqualityES::stations |&gt;
+  filter(station_name == "Barcelona (Sants)")
+
+*df &lt;- airqualityES::airqES |&gt;
+  filter(grepl(selection$id, station_id)) |&gt;
+  filter(pollutant == "PM10") |&gt;
+  mutate(pm10 = rowMeans(
+    across(starts_with("D")), na.rm=TRUE)) |&gt;
+  mutate(date = as.Date(paste(year, month, 1, sep="-")))
+
+ggplot(df) +
+  aes(date, pm10) +
+  geom_line() +
+  geom_smooth() +
+  theme_bw() +
+  labs(
+    title = "Montly average of PM10",
+    subtitle = "Measurement at Barcelona (Sants)"
+  )
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/airqualityES-plot-1.png" width="100%" /&gt;
+]
+
+---
+class: base24
+
+# Join rOpenSpain!
+
+- Much more could be done about the retrieval of statistical data
+  - In particular, we still lack an **"inebaser"** similar to istacbaser
+
+- Mapping needs are pretty much covered, but improvements can always be made
+  - We still lack cadastral access to the Basque Country
+  - Others would require a transition to the new spatial stack (based on **sf**)
+
+- **opendataes** needs your help!
+  - It does a great job setting the framework required to work with datos.gob.es
+  - There are many publishers and formats that could be added
+
+- Do you have other ideas? We'd love to hear you out!
+
+---
+class: center, middle, end-slide
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan) with the [**rosxaringan**](https://github.com/rOpenSpain/rosxaringan) template.
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr/), and [R Markdown](https://rmarkdown.rstudio.com).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="rOpenSpain.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

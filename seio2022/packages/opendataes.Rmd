@@ -1,0 +1,28 @@
+
+---
+
+# opendataes <span style="font-size: 50%;">(on GitHub)</span>
+
+.pull-left[
+### Authors
+
+- **Jorge Cimentada**
+- Jorge López
+
+### Key features
+
+- Retrieve data from **datos.gob.es**, the open-data initiative from the Spanish Government.
+- Currently, supports CSV format and 11 publishers (see `publishers_available`).
+- The identifier of a web-based search can be directly provided to `openes_load()`.
+- R-based search via `openes_keywords()`.
+]
+
+.pull-right[
+### Data sources
+
+- [datos.gob.es](https://datos.gob.es/).
+
+### Output formats
+
+- An object with `metadata` and `data`, both as **tibble**.
+]

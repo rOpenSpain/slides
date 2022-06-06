@@ -1,0 +1,30 @@
+
+---
+
+# Siane <span style="font-size: 50%;">(on GitHub)</span>
+
+.pull-left[
+### Authors
+
+- Carlos J. Gil Bellosta
+- **Nuno Carvalho**
+
+### Key features
+
+- Find maps in the (pre-downloaded) Siane repository, i.e. searching by map year
+  or administrative level using `siane_map()`.
+- Bind numerical data to polygons using `siane_merge()`.
+- Compatible with IGN maps and INE data.
+]
+
+.pull-right[
+### Data sources
+
+- [Instituto Geografico Nacional](https://www.ign.es/) (IGN).
+- [Instituto Nacional de Estadística](https://ine.es/) (INE).
+
+### Output formats
+
+- **raster** objects.
+- **data.frame**.
+]
